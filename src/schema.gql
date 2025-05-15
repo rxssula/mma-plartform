@@ -1,0 +1,24 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Fighter {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  country: String!
+  wins: Int!
+  losses: Int!
+  draws: Int!
+  knockouts: Int!
+  submissions: Int!
+  decisions: Int!
+  age: Int!
+  heightInCm: Int!
+  weightInKg: Int!
+}
+
+type Query {
+  getFighterById(id: Float!): Fighter!
+  getAllFighters: [Fighter!]!
+}

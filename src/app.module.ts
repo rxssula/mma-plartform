@@ -2,7 +2,10 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { FightersModule } from './fighter/fighter.module';
+import { FighterModule } from './fighter/fighter.module';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -16,7 +19,12 @@ import { FightersModule } from './fighter/fighter.module';
       entities: [],
       synchronize: true,
     }),
-    FightersModule,
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      playground: true,
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+    }),
+    FighterModule,
   ],
   controllers: [AppController],
   providers: [AppService],

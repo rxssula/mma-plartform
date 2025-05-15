@@ -1,9 +1,13 @@
 import { Module } from '@nestjs/common';
-import { FightersController } from './fighters.controller';
-import { FightersService } from './fighters.service';
+import { FighterController } from './fighter.controller';
+import { FighterService } from './fighter.service';
+import { FighterResolver } from './fighter.resolver';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Fighter } from './fighter.entity';
 
 @Module({
-  controllers: [FightersController],
-  providers: [FightersService]
+  imports: [TypeOrmModule.forFeature([Fighter])],
+  controllers: [FighterController],
+  providers: [FighterService, FighterResolver],
 })
-export class FightersModule {}
+export class FighterModule {}
