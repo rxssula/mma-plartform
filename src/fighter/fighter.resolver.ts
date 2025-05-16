@@ -7,7 +7,7 @@ export class FighterResolver {
   constructor(private fighterService: FighterService) {}
 
   @Query(() => Fighter)
-  async getFighterById(@Args('id') id: number) {
+  async getFighterById(@Args('id') id: string) {
     return await this.fighterService.getFighterById(id);
   }
 
