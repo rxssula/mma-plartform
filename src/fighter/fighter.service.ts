@@ -39,9 +39,8 @@ export class FighterService {
     id: string,
     updateFighterDto: UpdateFighterDto,
   ): Promise<Fighter> {
-    const fighter = await this.getFighterById(id);
-    Object.assign(fighter, updateFighterDto);
-    return this.fighterRepository.save(fighter);
+    await this.fighterRepository.update(id, updateFighterDto);
+    return this.getFighterById(id);
   }
 
   async remove(id: string): Promise<void> {
