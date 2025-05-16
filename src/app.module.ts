@@ -6,6 +6,8 @@ import { FighterModule } from './fighter/fighter.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
+import { WightClassModule } from './wight-class/wight-class.module';
+import { WeightClassModule } from './weight-class/weight-class.module';
 
 @Module({
   imports: [
@@ -25,6 +27,8 @@ import { join } from 'path';
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
     FighterModule,
+    WightClassModule,
+    WeightClassModule,
   ],
   controllers: [AppController],
   providers: [AppService],
