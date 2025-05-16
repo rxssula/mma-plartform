@@ -57,4 +57,6 @@ export class Fighter {
   weightInKg: number;
 
   // Fights column go here
+
+  // Weight class go here
 }
