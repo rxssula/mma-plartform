@@ -2,6 +2,41 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Event {
+  id: ID!
+  name: String!
+  location: String!
+  date: DateTime!
+  organization: String!
+  fights: [Fight!]
+  description: String
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Fight {
+  id: ID!
+  fighter1: Fighter!
+  fighter2: Fighter!
+  event: Event!
+  result: String!
+  winMethod: String!
+  weightClassId: String!
+  rounds: Float!
+  scheduledRounds: Float!
+}
+
+type WeightClass {
+  id: ID!
+  name: String!
+  maxWeightKg: Int!
+  minWeightKg: Int!
+  fighters: [Fighter!]
+}
+
 type Fighter {
   id: ID!
   firstName: String!
@@ -16,9 +51,12 @@ type Fighter {
   age: Int!
   heightInCm: Int!
   weightInKg: Int!
+  fights: [Fight!]
+  weightClass: WeightClass!
 }
 
 type Query {
-  getFighterById(id: Float!): Fighter!
-  getAllFighters: [Fighter!]!
+  getFighterById(id: String!): Fighter!
+  getAllFighters: [WeightClass!]!
+  getWeightClassById(id: String!): WeightClass!
 }
