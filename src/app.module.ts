@@ -7,6 +7,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { WeightClassModule } from './weight-class/weight-class.module';
+import { FightModule } from './fight/fight.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { WeightClassModule } from './weight-class/weight-class.module';
     }),
     FighterModule,
     WeightClassModule,
+    FightModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,10 +1,12 @@
 import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
+import { Fight } from 'src/fight/fight.entity';
 import { WeightClass } from 'src/weight-class/weight-class.entity';
 import {
   Column,
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -63,9 +65,10 @@ export class Fighter {
   @Column()
   weightInKg: number;
 
-  // Fights column go here
+  @Field(() => [Fight], { nullable: true })
+  @OneToMany(() => Fight, (fight) => fight.fighter1 || fight.fighter2)
+  fights: Fight[];
 
-  // Weight class go here
   @Field(() => WeightClass)
   @ManyToOne(() => WeightClass, (weightClass) => weightClass.fighters)
   @JoinColumn({ name: 'weightClassId' })
