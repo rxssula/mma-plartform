@@ -8,6 +8,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { WeightClassModule } from './weight-class/weight-class.module';
 import { FightModule } from './fight/fight.module';
+import { EventModule } from './event/event.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { FightModule } from './fight/fight.module';
     FighterModule,
     WeightClassModule,
     FightModule,
+    EventModule,
   ],
   controllers: [AppController],
   providers: [AppService],

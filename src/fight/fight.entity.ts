@@ -1,5 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { Fighter } from 'src/fighter/fighter.entity';
+import { Event } from 'src/event/event.entity';
 import {
   Column,
   Entity,
@@ -50,14 +51,13 @@ export class Fight {
   @Column()
   fighter2Id: string;
 
-  // Events
-  // @Field(() => Event)
-  // @ManyToOne(() => Event, (event) => event.fights)
-  // @JoinColumn({ name: 'eventId' })
-  // event: Event;
+  @Field(() => Event)
+  @ManyToOne(() => Event, (event) => event.fights)
+  @JoinColumn({ name: 'eventId' })
+  event: Event;
 
-  // @Column()
-  // eventId: string;
+  @Column()
+  eventId: string;
 
   @Field()
   @Column({ type: 'enum', enum: FightResult, default: FightResult.PENDING })
