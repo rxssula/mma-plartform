@@ -3,12 +3,13 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Fight } from './fight.entity';
 import { Repository } from 'typeorm';
 import { CreateFightDto } from './dto/create-fight.dto';
+import { UpdateFightResultDto } from './dto/update-fight-result.dto';
 
 @Injectable()
 export class FightService {
   constructor(
     @InjectRepository(Fight) private fightRepository: Repository<Fight>,
-  ) {}
+  ) { }
 
   async createFight(createFightDto: CreateFightDto): Promise<Fight> {
     const fight = this.fightRepository.create(createFightDto);
@@ -39,6 +40,16 @@ export class FightService {
       where: { eventId },
       relations: ['fighter1', 'fighter2'],
     });
+  }
+
+  async updateFightResult(id: string, updateFightResultDto: UpdateFightResultDto): Promise<Fight> {
+    const fight = await this.getFightById(id);
+
+    fight.result = updateFightResultDto.result;
+    fight.winMethod = updateFightResultDto.winMethod;
+    fight.rounds = updateFightResultDto.rounds;
+
+    return this.fightRepository.save(fight);
   }
 
   async deleteFight(id: string): Promise<void> {

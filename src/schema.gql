@@ -59,6 +59,9 @@ type Query {
   getFighterById(id: String!): Fighter!
   getAllFighters: [WeightClass!]!
   getWeightClassById(id: String!): WeightClass!
+  fights: [Fight!]!
+  fight(id: ID!): Fight!
+  fightsByEvent(eventId: ID!): [Fight!]!
   getEventById(id: String!): Event!
   getAllEvents: [Event!]!
 }
@@ -67,6 +70,9 @@ type Mutation {
   createFighter(createFighterInput: CreateFighterDto!): Fighter!
   updateFighter(id: String!, updateFighterInput: UpdateFighterDto!): Fighter!
   removeFighter(id: String!): Boolean!
+  createFight(createFightInput: CreateFightDto!): Fight!
+  deleteFight(id: ID!): Boolean!
+  updateFightResult(id: ID!, updateFightResultInput: UpdateFightResultDto!): Fight!
   createEvent(createEventInput: CreateEventDto!): Event!
   updateEvent(id: String!, updateEventInput: UpdateEventDto!): Event!
   removeEvent(id: String!): Boolean!
@@ -90,6 +96,23 @@ input UpdateFighterDto {
   heightInCm: Int
   weightInKg: Int
   weightClassId: String
+}
+
+input CreateFightDto {
+  fighter1Id: String!
+  fighter2Id: String!
+  eventId: String!
+  weightClassId: String!
+  scheduledRounds: Int!
+  rounds: Int!
+  result: String! = "PENDING"
+  winMethod: String! = "PENDING"
+}
+
+input UpdateFightResultDto {
+  result: String!
+  winMethod: String!
+  rounds: Int!
 }
 
 input CreateEventDto {
