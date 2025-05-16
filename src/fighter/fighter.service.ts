@@ -13,7 +13,7 @@ export class FighterService {
     return await this.fighterRepository.find();
   }
 
-  async getFighterById(id: number): Promise<Fighter> {
+  async getFighterById(id: string): Promise<Fighter> {
     const fighter = await this.fighterRepository.findOne({ where: { id } });
 
     if (!fighter) {
