@@ -1,8 +1,8 @@
 # MMA Platform
 
-## Description
+## Encountered Problems
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+I had a problem implementing ranking system. I tried to implement it, but when I did that and tested everything crashed. I was debugging it. However it was unsuccessful. Then I decided that it is better to submit fully working code without ranking system than submit barely working code with not ready ranking system.
 
 ## Project setup
 
@@ -44,18 +44,23 @@ docker cp sql/seed_data.sql mma-platform:/seed_data.sql
 docker exec -it mma-platform psql -U postgres -d mma-platform -f /create_tables.sql
 docker exec -it mma-platform psql -U postgres -d mma-platform -f /seed_data.sql
 ```
+
 ## How to use GraphQL
 
 After you run the server locally go to the "/graphql" route. There you can use queries. For example:
 
 ### Query without arguments
+
 <img width="1470" alt="image" src="https://github.com/user-attachments/assets/fe7631e4-db21-493e-8ef7-47fe95bc5313" />
 
 ### Query with arguments
+
 <img width="1470" alt="image" src="https://github.com/user-attachments/assets/73e968ee-0e4d-43f9-bafd-1e7b4d497175" />
 
 ### Mutation to create fighter
+
 <img width="1470" alt="image" src="https://github.com/user-attachments/assets/86b42ed4-1c53-4fe9-bee0-325b223fc57c" />
 
 ## Entity Relationship Diagram (ERD)
+
 <img width="964" alt="image" src="https://github.com/user-attachments/assets/1fe00c4f-c6cc-4ddc-94ba-2b9e92d24236" />
