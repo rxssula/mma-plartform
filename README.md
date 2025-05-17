@@ -57,3 +57,5 @@ After you run the server locally go to the "/graphql" route. There you can use q
 ### Mutation to create fighter
 <img width="1470" alt="image" src="https://github.com/user-attachments/assets/86b42ed4-1c53-4fe9-bee0-325b223fc57c" />
 
+## Entity Relationship Diagram (ERD)
+<img width="964" alt="image" src="https://github.com/user-attachments/assets/1fe00c4f-c6cc-4ddc-94ba-2b9e92d24236" />
