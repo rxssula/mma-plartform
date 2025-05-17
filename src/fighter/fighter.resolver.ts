@@ -30,7 +30,9 @@ export class FighterResolver {
   async createFighter(
     @Args('createFighterInput') createFighterDto: CreateFighterDto,
   ) {
-    return this.fighterService.create(createFighterDto);
+    const fighter = await this.fighterService.create(createFighterDto);
+
+    return this.fighterService.getFighterById(fighter.id);
   }
 
   @Mutation(() => Fighter)
