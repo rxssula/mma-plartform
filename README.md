@@ -47,4 +47,9 @@ docker exec -it mma-platform psql -U postgres -d mma-platform -f /seed_data.sql
 ## How to use GraphQL
 
 After you run the server locally go to the "/graphql" route. There you can use queries. For example:
+
+### GET without arguments
 <img width="1470" alt="image" src="https://github.com/user-attachments/assets/fe7631e4-db21-493e-8ef7-47fe95bc5313" />
+
+### GET with arguments
+<img width="1470" alt="image" src="https://github.com/user-attachments/assets/73e968ee-0e4d-43f9-bafd-1e7b4d497175" />
